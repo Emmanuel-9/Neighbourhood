@@ -1,7 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
     <div class="row">
-        <h3>welcome</h3>
-        
+        <h3>welcome</h3>        
+    </div>
+    <div class="row">
+        {% for neigh in neighs %}
+        <div class="col-sm-4">
+            <a href="{% url 'neighbourhood-detail' neigh.id %}"><h3>{{neigh.name}}</h3></a>
+            <p>{{neigh.location}}</p>
+
+        </div>
+        {% endfor %}
     </div>
 {% endblock %}

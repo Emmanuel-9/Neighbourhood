@@ -36,6 +36,7 @@ MODE=config("MODE", default="dev")
 
 INSTALLED_APPS = [
     'users.apps.UsersConfig',
+    'hood.apps.HoodConfig',
     'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',

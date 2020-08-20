@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .foms import SignUpForm, UserUpdateForm, ProfileUpdateForm
+from .forms import SignUpForm, UserUpdateForm, ProfileUpdateForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
@@ -10,14 +10,17 @@ from django.contrib import messages
 def register(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
+        print('ok')
         if form.is_valid():
             form.save()
+            print('ok')
             username = form.cleaned_data.get('username')
             email = form.cleaned_data.get('email')
             messages.success(request, f'Account created')
             return redirect('login')
     else:
         form = SignUpForm()
+        print('ok')
        
     return render(request, 'users/register.html',{'form': form} )
 
@@ -34,7 +37,7 @@ def profile(request):
             return redirect('profile')
     else:
         up_form = UserUpdateForm(instance=request.user)
-        pr_form = ProfileUpdateForm(instance=request.user.profile)
+        pr_form = ProfileUpdateForm(instance=request.user.userprofile)
     content = {
         'user_form': up_form,
         'profile_form': pr_form,

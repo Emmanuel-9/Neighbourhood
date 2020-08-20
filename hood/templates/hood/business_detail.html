@@ -7,8 +7,9 @@
                         <h4 class="card-text">{{object.name}}</h4>
                         <h6>{{object.email}}</h6>
                         <p>{{object.desc}}</p>
-                        <p>{{object.neighbourhood}}</p>                            
-                        {% if object.user == user %}
+                        <p>{{object.neighbourhood}}</p>   
+                        <p>{{object.user}}</p>                         
+                        {% if object.user == user or user.is_superuser%}
                         <div class="card-footer react" style="justify-content: space-between;">
                             <a href="{% url 'update-business' object.id %}" class="btn btn-outline-secondary">Update Business</a>
                             <a href="{% url 'delete-business' object.id %}" class="btn btn-outline-danger ml-2">Delete Business</a>

@@ -5,7 +5,7 @@ from .models import Neighbourhood,  Business, Post
 from django.http import HttpResponse
 from django.contrib.auth.mixins import UserPassesTestMixin
 from django.views.generic import DetailView, CreateView, UpdateView, DeleteView
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.utils.decorators import method_decorator
 from django.contrib import messages
 from .forms import BusinessCreateForm, HoodCreateForm
@@ -37,6 +37,23 @@ def post(request):
     }
     return render(request, 'hood/posts.html', context)
 
+# @user_passes_test(lambda u: u.is_superuser)
+def admin_profile(request):
+    if not request.user.username == 'admin':
+        return redirect('/login/?next=%s' % request.path)
+    else:
+        users = User.objects.all().order_by('id')
+        print(type(users))
+        business = Business.objects.all()
+        neigh = Neighbourhood.objects.all()
+        context = {
+            'users': users,
+            'business': business,
+            'hoods': neigh
+        }
+        return render(request, 'hood/admin_profile.html', context)
+
+@method_decorator(login_required, name='dispatch')
 class BusinessCreateView(UserPassesTestMixin, CreateView):
     model = Business
     fields = ['name', 'email', 'desc', 'neighbourhood']
@@ -56,6 +73,7 @@ class BusinessCreateView(UserPassesTestMixin, CreateView):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
+@method_decorator(login_required, name='dispatch')
 class BusinessUpdateView(UserPassesTestMixin, UpdateView):
     model = Business
     fields = ['name', 'email', 'desc', 'neighbourhood']
@@ -78,6 +96,7 @@ class BusinessUpdateView(UserPassesTestMixin, UpdateView):
 class BusinessDetailView(DetailView):
     model = Business
 
+@method_decorator(login_required, name='dispatch')
 class BusinessDeleteView(UserPassesTestMixin, DeleteView):
     model = Business
     fields = ['name', 'email', 'desc', 'neighbourhood']
@@ -93,6 +112,7 @@ class BusinessDeleteView(UserPassesTestMixin, DeleteView):
             return True
         return False
 
+@method_decorator(login_required, name='dispatch')
 class HoodCreateView(UserPassesTestMixin, CreateView):
     model = Neighbourhood
     fields = '__all__'
@@ -116,6 +136,7 @@ class HoodCreateView(UserPassesTestMixin, CreateView):
 class HoodDetailView(DetailView):
     model = Neighbourhood
 
+@method_decorator(login_required, name='dispatch')
 class HoodUpdateView(UserPassesTestMixin, UpdateView):
     model = Neighbourhood
     fields = '__all__'
@@ -136,6 +157,7 @@ class HoodUpdateView(UserPassesTestMixin, UpdateView):
         print('great')
         return super().form_valid(form)
 
+@method_decorator(login_required, name='dispatch')
 class HoodDeleteView(UserPassesTestMixin, DeleteView):
     model = Neighbourhood
     fields = '__all__'

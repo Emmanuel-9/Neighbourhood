@@ -1,4 +1,6 @@
 {% load static %}
+{% load user_group %}
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -19,18 +21,24 @@
 <body>
     <header class="site-header">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="{% url 'welcome' %}"><img src="https://img.icons8.com/cute-clipart/50/000000/instagram-new.png"/></a>
+            <a class="navbar-brand" href="{% url 'welcome' %}">Hood</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav mr-auto navbar-link">
                 <li class="nav-item active">
-                  <a class="nav-link" href="{% url 'welcome' %}" style="font-family: Billabong; font-size:2em">Instagram <span class="sr-only">(current)</span></a>
-                </li>               
+                  <a class="nav-link" href="{% url 'welcome' %}" style="font-size:1.3em">Neighbourhoods <span class="sr-only">(current)</span></a>
+                </li>  
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'business' %}" style="font-size:1.3em">Businesses <span class="sr-only">(current)</span></a>
+                </li>     
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'posts' %}" style="font-size:1.3em">Posts <span class="sr-only">(current)</span></a>
+                </li>             
                 
-              </ul>
-              <ul class="navbar-navnavbar-link">
+              </ul>     
+              <ul class="navbar-nav ml-auto navbar-link">
                 <li class="nav-item"> 
                   <form action="">
                     <div class="input-group mt-3">
@@ -44,23 +52,52 @@
                     
                   
                 </li>
-              </ul>
-              <ul class="navbar-nav ml-auto navbar-link">
-                {% if user.is_authenticated %}
-                
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'profile' %}">Profile</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'logout'%}">Logout</a>
-                </li>
+                {% if user.is_authenticated and user.is_superuser%}
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'register-hood' %}">Register Neighbourhood</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'register-business' %}">Register Business</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'register-business' %}">Create Post</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'logout'%}">Logout</a>
+                  </li>
+                {% elif user.is_authenticated and user|has_group:"neighbourhood admin"%}
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'register-business' %}">Register Business</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'create-post' %}">Create Post</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'logout'%}">Logout</a>
+                  </li>
+                {% elif user.is_authenticated and user|has_group:"normal users" %}
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'create-post' %}">Create Post</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'logout'%}">Logout</a>
+                  </li>
                 {% else %}
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'login'%}">Login <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{%url 'register'%}">Register</a>
-                </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login'%}">Login <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{%url 'register'%}">Register</a>
+                  </li>
                 {% endif %}
                 
               </ul>

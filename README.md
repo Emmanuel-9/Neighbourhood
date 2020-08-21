@@ -5,7 +5,7 @@ An application where users are categorized into three:
 * Normal user
 
 ## FEATURES
-The features a user is able to access is dependent on the category of user, he/she is.
+The features users are able to access is dependent on the category of user they are in.
 |System Administrators  |  Neighbourhood Admins  |   Normal Users   
 | :--------------------|  :--------------------| :------------- |
 |  See all users       | Add info about neighbourhoods | Sign in |
@@ -17,7 +17,7 @@ The features a user is able to access is dependent on the category of user, he/s
 ## TECHNOLOGIES USED
 * Django
 * Python
-* POstgres database
+* Postgres database
 * Bootstrap
 
 
@@ -63,6 +63,6 @@ DISABLE_COLLECTSTATIC=1
 * Andrew Yaah
 * Joan Wanjiku
 * Emmanuel Orega
-
+* Vincent Kingori
 
 

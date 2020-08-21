@@ -48,7 +48,7 @@ DB_USER='<db_username>'
 DB_PASSWORD='<db_password>'
 DB_HOST='127.0.0.1'
 MODE='dev' 
-ALLOWED_HOSTS='.localhost','floating-falls-55062.herokuapp.com', '.127.0.0.1'
+ALLOWED_HOSTS='.localhost','.herokuapp.com', '.127.0.0.1'
 DISABLE_COLLECTSTATIC=1
 ```
 * Run the application 

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+    
+    <div class="row">
+        <div class="col-sm-4">
+           <p>Are you sure you want to delete {{user_ret}}</p>
+           <a href="{% url 'confirm-delete' user_ret %}" class="btn btn-danger">Yes</a>
+           <a href="{% url 'welcome' %}" class="btn btn-danger">No</a>
+
+        </div>
+    </div>
+{% endblock %}

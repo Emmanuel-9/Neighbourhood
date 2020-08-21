@@ -5,10 +5,14 @@
         <div class="col-sm-12">
             <div class="media">
                 <img src="{{user.userprofile.image.url}}" alt="{{user.username}}" class="account-img">
+                
                 <div class="media-body">
                     <h5 class="account-heading">{{user.username}}</h5>
                     <p class="text-secondary">{{user.email}}</p>
-                    <p>{{user.profile.bio}}</p>
+                    <p>{{user.userprofile.bio}}</p>
+                    <p>{{user.userprofile.neighbourhood}}</p>
+                    <p>{{user.userprofile.neighbourhood.location}}</p>
+
                 </div>
             </div>
             <form action="" method="POST" enctype="multipart/form-data">

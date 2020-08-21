@@ -2,7 +2,20 @@
 {% load static %}
 {% block content %}
     <div class="row">
+<<<<<<< HEAD
         <h3> Welcome </h3>
         
+=======
+        <h3>welcome</h3>        
+    </div>
+    <div class="row">
+        {% for neigh in neighs %}
+        <div class="col-sm-4">
+            <a href="{% url 'neighbourhood-detail' neigh.id %}"><h3>{{neigh.name}}</h3></a>
+            <p>{{neigh.location}}</p>
+
+        </div>
+        {% endfor %}
+>>>>>>> 15b27912935d5a569e31d841086d970048fee0e0
     </div>
 {% endblock %}

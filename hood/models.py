@@ -11,6 +11,12 @@ class Neighbourhood(models.Model):
     def __str__(self):
         return f'{self.name}'
 
+    def save_neighbourhood(self):
+        self.save()
+
+    def del_neighbourhood(self):
+        self.delete()        
+
 class Business(models.Model):
     name = models.CharField(max_length=100)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -20,3 +26,8 @@ class Business(models.Model):
     def __str__(self):
         return f'{self.name}'
 
+    def save_business(self):
+        self.save()
+
+    def del_business(self):
+        self.delete()        

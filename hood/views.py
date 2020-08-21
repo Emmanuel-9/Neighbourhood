@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import Group
 from django.contrib.auth.models import User
 from .models import Neighbourhood,  Business, Post
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.mixins import UserPassesTestMixin
 from django.views.generic import DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.decorators import login_required, user_passes_test
@@ -195,3 +195,26 @@ class PostCreateView(CreateView):
 class PostDetailView(DetailView):
     model = Post
  
+@login_required
+def remove_user(request, id):
+    retrieved_user = User.objects.filter(id=id).first()
+
+    print(retrieved_user)
+    context = {
+        'user_ret': retrieved_user
+    }
+    return render(request, 'hood/delete_user.html', context)
+
+@login_required
+def delete_user(request, user_ret):
+    user_del = User.objects.filter(username=user_ret).first()
+    if user_del is not None:
+        print(user_del)
+        user_del.delete()
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+        # return redirect('welcome')
+    else:
+        messages.danger('User not found')
+        return redirect('welcome')
+
+    

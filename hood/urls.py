@@ -16,6 +16,7 @@ urlpatterns = [
     path('business/<int:pk>/delete/', views.BusinessDeleteView.as_view(), name='delete-business'),
     path('create_post/', views.PostCreateView.as_view(), name='create-post'),
     path('posts/<int:pk>/', views.PostDetailView.as_view(), name='post-detail'),
-    path('admin_pr/', views.admin_profile, name='admin-profile')
-
+    path('admin_pr/', views.admin_profile, name='admin-profile'),
+    path('user/<int:id>/', views.remove_user, name='remove-user'),
+    path('user/<user_ret>/delete/', views.delete_user, name='confirm-delete')
 ]

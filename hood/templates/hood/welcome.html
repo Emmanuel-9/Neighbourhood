@@ -2,11 +2,11 @@
 {% load static %}
 {% block content %}
     <div class="row">
-        <h3> Welcome </h3>
+        <h3> <strong> Neighbourhoods </strong></h3>
 
                
     </div>
-    <div class="row">
+    <div class="card" style="background-color: burlywood;">
         {% for neigh in neighs %}
         <div class="col-sm-4">
             <a href="{% url 'neighbourhood-detail' neigh.id %}"><h3>{{neigh.name}}</h3></a>

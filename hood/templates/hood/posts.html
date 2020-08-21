@@ -10,7 +10,7 @@
                 <div class="card mt-1">
                                        
                     <img class="card-img-top mt-1" src="{{post.image.url}}"  style="height: 30vh; object-fit:cover;">
-                    <div class="card-body">                      
+                    <div class="card-body" style="background-color: bisque;">                      
                         <p class="card-text">{{post.content | truncatewords:20}} <a href="{% url 'post-detail' post.id %}">read more</a></p>
                         <small>{{post.user.username}}</small>
                         <small>{{post.neighbourhood.name}}</small>

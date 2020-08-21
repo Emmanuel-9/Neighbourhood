@@ -14,17 +14,17 @@
     {% endif %}
     {% block styles %}
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
         <link rel="shortcut icon" type="image/png"  href="{% static 'images/homepage.png'%}">  
     {% endblock %}
   
 </head>
 <body>
     <header class="site-header">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light bg-dark">
             <a class="navbar-brand" href="{% url 'welcome' %}"><img src="https://img.icons8.com/cute-clipart/64/000000/home.png"/></a>
 
-            <a class="navbar-brand" href="{% url 'welcome' %}">Hood</a>
+            <a class="navbar-brand" href="{% url 'welcome' %}" style="color: cornflowerblue;">Hood</a>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
@@ -35,13 +35,13 @@
 
               <ul class="navbar-nav mr-auto navbar-link">
                 <li class="nav-item active">
-                  <a class="nav-link" href="{% url 'welcome' %}" style="font-size:1.3em">Neighbourhoods <span class="sr-only">(current)</span></a>
+                  <a class="nav-link" href="{% url 'welcome' %}" style="font-size:1.3em;color: cornflowerblue;">Neighbourhoods <span class="sr-only">(current)</span></a>
                 </li>  
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url 'business' %}" style="font-size:1.3em">Businesses <span class="sr-only">(current)</span></a>
+                  <a class="nav-link" href="{% url 'business' %}" style="font-size:1.3em; color: cornflowerblue;">Businesses <span class="sr-only">(current)</span></a>
                 </li>     
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url 'posts' %}" style="font-size:1.3em">Posts <span class="sr-only">(current)</span></a>
+                  <a class="nav-link" href="{% url 'posts' %}" style="font-size:1.3em; color: cornflowerblue;">Posts <span class="sr-only">(current)</span></a>
                 </li>             
                 
               </ul>     
@@ -100,11 +100,11 @@
                     <a class="nav-link" href="{% url 'logout'%}">Logout</a>
                   </li>
                 {% else %}
-                  <li class="nav-item">
-                    <a class="nav-link" href="{% url 'login'%}">Login <span class="sr-only">(current)</span></a>
+                  <li class="nav-item" style="padding-top: 10px;">
+                    <a class="nav-link" href="{% url 'login'%}" style="color: cornflowerblue;">Login <span class="sr-only">(current)</span></a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="{%url 'register'%}">Register</a>
+                  <li class="nav-item" style="padding-top: 10px;">
+                    <a class="nav-link" href="{%url 'register'%}" style="color: cornflowerblue;">Register</a>
                   </li>
                 {% endif %}
                 

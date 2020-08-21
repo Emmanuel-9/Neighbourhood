@@ -16,14 +16,12 @@ class Neighbourhood(models.Model):
 
     def __str__(self):
         return f'{self.name}'
-
-<<<<<<< HEAD
     def save_neighbourhood(self):
         self.save()
 
     def del_neighbourhood(self):
         self.delete()        
-=======
+
     def get_absolute_url(self):
         return reverse('welcome') 
 
@@ -31,7 +29,7 @@ class Neighbourhood(models.Model):
     def get_all_neighbourhoods(cls):
         return cls.objects.all()
     
->>>>>>> 15b27912935d5a569e31d841086d970048fee0e0
+
 
 class Business(models.Model):
     
@@ -44,13 +42,11 @@ class Business(models.Model):
     def __str__(self):
         return f'{self.name}'
 
-<<<<<<< HEAD
     def save_business(self):
         self.save()
 
     def del_business(self):
         self.delete()        
-=======
     def get_absolute_url(self):
         return reverse('welcome') 
 
@@ -75,4 +71,4 @@ class Post(models.Model):
     @classmethod
     def get_all_posts(cls):
         return cls.objects.order_by('-date_posted')
->>>>>>> 15b27912935d5a569e31d841086d970048fee0e0
+

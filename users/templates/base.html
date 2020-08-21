@@ -8,31 +8,26 @@
     {% if title %}
         <title> | {{title}}</title>
     {% else %}
-        <title>  </title>
+        <title> Neighbour-Hood </title>
     {% endif %}
     {% block styles %}
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">  
+        <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+        <link rel="shortcut icon" type="image/png"  href="{% static 'images/homepage.png'%}">  
     {% endblock %}
   
 </head>
 <body>
     <header class="site-header">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="{% url 'welcome' %}"><img src="https://img.icons8.com/cute-clipart/50/000000/instagram-new.png"/></a>
+            <a class="navbar-brand" href="{% url 'welcome' %}"><img src="https://img.icons8.com/cute-clipart/64/000000/home.png"/></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav mr-auto navbar-link">
-                <li class="nav-item active">
-                  <a class="nav-link" href="{% url 'welcome' %}" style="font-family: Billabong; font-size:2em">Instagram <span class="sr-only">(current)</span></a>
-                </li>               
-                
-              </ul>
               <ul class="navbar-navnavbar-link">
                 <li class="nav-item"> 
-                  <form action="">
+                  <form action="#" style="padding-left: 400px;">
                     <div class="input-group mt-3">
                       <input type="text" class="form-control" placeholder="search" name="user">
                       <div class="input-group-prepend">

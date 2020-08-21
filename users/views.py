@@ -44,3 +44,5 @@ def profile(request):
     }
     return render(request, 'users/profile.html', content)
 
+
+
